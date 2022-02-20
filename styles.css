@@ -12,12 +12,27 @@ body {
     height: 800px;
     width: 600px;
     border: 2px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    gap: 30px;
 
 }
 
 #display {
+    display: flex;
+    justify-content: space-between;
     border: 2px solid black;
     flex: 2;
+}
+#display p {
+    font-size: 20px;
+}
+#input {
+    margin-left: 20px;
+}
+#output {
+   align-self: flex-end;
+   margin-right: 20px;
 }
 #equals {
     grid-column: 1/5;
