@@ -1,5 +1,8 @@
 
 let displayValue = '';
+let aValue = 0;
+let bValue = 0;
+let operator = '';
 // query selectors
 const input = document.getElementById('input');
 const output = document.getElementById('output');
@@ -75,24 +78,28 @@ zero.addEventListener('click', () => {
     console.log(displayValue);
 });
 div.addEventListener('click', () => {
-    displayValue += '÷';
-    input.textContent = displayValue;
-    console.log(displayValue);
+    bValue = aValue
+    aValue = parseInt(displayValue);
+    operator = '/';
+    displayValue = "";
 });
 mul.addEventListener('click', () => {
-    displayValue += '×';
-    input.textContent = displayValue;
-    console.log(displayValue);
+    bValue = aValue
+    aValue = parseInt(displayValue);
+    operator = '*';
+    displayValue = "";
 });
 plus.addEventListener('click', () => {
-    displayValue += '+';
-    input.textContent = displayValue;
-    console.log(displayValue);
+    bValue = aValue
+    aValue = parseInt(displayValue);
+    operator = '+';
+    displayValue = "";
 });
 minus.addEventListener('click', () => {
-    displayValue += '−';
-    input.textContent = displayValue;
-    console.log(displayValue);
+    bValue = aValue
+    aValue = parseInt(displayValue);
+    operator = '-';
+    displayValue = "";
 });
 clear.addEventListener('click', () => {
     displayValue = '';
@@ -104,8 +111,16 @@ decimal.addEventListener('click', () => {
     input.textContent = displayValue;
     console.log(displayValue);
 });
+equals.addEventListener('click', () => {
+    bValue = parseInt(displayValue);
+    console.log({bValue});
+    displayValue = `${operate(aValue, operator, bValue)}`;
+    input.textContent = displayValue;
 
+    console.log({displayValue});
 
+})
+// functions
 function add(a, b) {
     return a + b;
 }
@@ -124,18 +139,18 @@ function divide(a, b) {
 function operate(a, b, c) {
     switch (b) {
     case '+':
-        console.log(add(a, c));
+        return add(a, c);
         break;
     case '-':
-        console.log(subtract(a, c));
+        return subtract(a, c);
         break;
     case '*':
-        console.log(multiply(a, c));
+        return multiply(a, c);
         break;
     case '/':
-        console.log(divide(a, c));
+        return divide(a, c);
         break;
     default:
-        console.log("I can't do that")
+        return "I can't do that";
     }
 }
