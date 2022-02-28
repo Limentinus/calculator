@@ -136,7 +136,7 @@ decimal.addEventListener('click', () => {
 equals.addEventListener('click', () => {
     bValue = parseFloat(displayValue);
     console.log({bValue});
-    displayValue = `${operate(aValue, operator, bValue).toPrecision(12) / 1}`;
+    displayValue = `${operate(aValue, operator, bValue)}`;
     counter = 0;
     decCount = 0;
     input.textContent = displayValue;
