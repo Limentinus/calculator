@@ -3,6 +3,8 @@ let displayValue = '';
 let aValue = 0;
 let bValue = 0;
 let operator = '';
+let counter = 0;
+let decCount = 0;
 // query selectors
 const input = document.getElementById('input');
 const output = document.getElementById('output');
@@ -29,92 +31,114 @@ const equals = document.getElementById('equals');
 one.addEventListener('click', () => {
     displayValue += '1';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 
 two.addEventListener('click', () => {
     displayValue += '2';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 three.addEventListener('click', () => {
     displayValue += '3';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 four.addEventListener('click', () => {
     displayValue += '4';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 five.addEventListener('click', () => {
     displayValue += '5';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 six.addEventListener('click', () => {
     displayValue += '6';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 seven.addEventListener('click', () => {
     displayValue += '7';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 eight.addEventListener('click', () => {
     displayValue += '8';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 nine.addEventListener('click', () => {
     displayValue += '9';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 zero.addEventListener('click', () => {
     displayValue += '0';
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 div.addEventListener('click', () => {
-    bValue = aValue
-    aValue = parseInt(displayValue);
+    if (counter == 0) {
+        aValue = parseFloat(displayValue);
+    } else {
+        aValue = divide(aValue, parseFloat(displayValue));
+    }
+    input.textContent = aValue;
+    counter++
+    decCount = 0;
     operator = '/';
     displayValue = "";
 });
 mul.addEventListener('click', () => {
-    bValue = aValue
-    aValue = parseInt(displayValue);
+    if (counter == 0) {
+        aValue = parseFloat(displayValue);
+    } else {
+        aValue = multiply(aValue, parseFloat(displayValue));
+    }
+    input.textContent = aValue;
+    counter++
+    decCount = 0;
     operator = '*';
     displayValue = "";
 });
 plus.addEventListener('click', () => {
-    bValue = aValue
-    aValue = parseInt(displayValue);
+    if (counter == 0) {
+        aValue = parseFloat(displayValue);
+    } else {
+        aValue = add(aValue, parseFloat(displayValue));
+    }
+    input.textContent = aValue;
+    counter++
+    decCount = 0;
     operator = '+';
     displayValue = "";
 });
 minus.addEventListener('click', () => {
-    bValue = aValue
-    aValue = parseInt(displayValue);
+    if (counter == 0) {
+        aValue = parseFloat(displayValue);
+    } else {
+        aValue = subtract(aValue, parseFloat(displayValue));
+    }
+    input.textContent = aValue;
+    counter++
+    decCount = 0;
     operator = '-';
     displayValue = "";
 });
 clear.addEventListener('click', () => {
     displayValue = '';
+    operator = '';
+    counter = 0;
+    aValue = 0;
+    bValue = 0;
+    decCount = 0;
     input.textContent = displayValue;
-    console.log(displayValue);
 });
 decimal.addEventListener('click', () => {
-    displayValue += '.';
-    input.textContent = displayValue;
-    console.log(displayValue);
+    if (decCount == 0) {
+        displayValue += '.';
+        input.textContent = displayValue;
+    }
+    decCount++
 });
 equals.addEventListener('click', () => {
-    bValue = parseInt(displayValue);
+    bValue = parseFloat(displayValue);
     console.log({bValue});
-    displayValue = `${operate(aValue, operator, bValue)}`;
+    displayValue = `${operate(aValue, operator, bValue).toPrecision(12) / 1}`;
+    counter = 0;
+    decCount = 0;
     input.textContent = displayValue;
 
     console.log({displayValue});
@@ -122,35 +146,39 @@ equals.addEventListener('click', () => {
 })
 // functions
 function add(a, b) {
-    return a + b;
+    return (a + b);
 }
 function subtract(a, b) {
-    return a - b;
+    return (a - b);
 }
 
 function multiply(a, b) {
-    return a * b;
+    return (a * b);
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b == 0) {
+        return "lol, no!";
+    } else {
+    return (a / b);
+    }
 }
 
 function operate(a, b, c) {
-    switch (b) {
-    case '+':
-        return add(a, c);
-        break;
-    case '-':
+
+    if (b == '/' && c == 0) {
+        return "lol, no!";
+    } else if (b == '+') {
+        return add(a,  c);
+    } else if (b == '-') {
         return subtract(a, c);
-        break;
-    case '*':
+    } else if (b == '*') {
         return multiply(a, c);
-        break;
-    case '/':
+    } else if (b == '/') {
         return divide(a, c);
-        break;
-    default:
-        return "I can't do that";
     }
+
+
 }
+
+
