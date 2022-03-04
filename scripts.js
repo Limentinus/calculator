@@ -1,21 +1,22 @@
 
+// variables
 let displayValue = '';
 let aValue = 0;
 let bValue = 0;
 let operator = '';
 let counter = 0;
 let decCount = 0;
+
+
 // query selectors
 const numButtons = document.querySelectorAll('[data-number]');
-const output = document.getElementById('output');
 const opButtons = document.querySelectorAll('[data-operator]')
-
+const output = document.getElementById('output');
 const clear = document.getElementById('clear');
 const decimal = document.getElementById('decimal');
 const equals = document.getElementById('equals');
 
 // event listeners
-
 numButtons.forEach((button) => {
     button.addEventListener("click", () => {
         displayValue += button.innerText;
@@ -40,6 +41,7 @@ clear.addEventListener('click', () => {
     decCount = 0;
     output.textContent = displayValue;
 });
+
 decimal.addEventListener('click', () => {
     if (decCount == 0) {
         displayValue += '.';
@@ -47,6 +49,7 @@ decimal.addEventListener('click', () => {
     }
     decCount++
 });
+
 equals.addEventListener('click', () => {
     bValue = parseFloat(displayValue);
     console.log({bValue});
@@ -58,6 +61,7 @@ equals.addEventListener('click', () => {
     console.log({displayValue});
 
 })
+
 // functions
 function add(a, b) {
     return (a + b);
