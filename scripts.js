@@ -5,7 +5,6 @@ let aValue = 0;
 let bValue = 0;
 let operator = '';
 let counter = 0;
-let decCount = 0;
 
 
 // query selectors
@@ -43,11 +42,10 @@ clear.addEventListener('click', () => {
 });
 
 decimal.addEventListener('click', () => {
-    if (decCount == 0) {
+    if (!displayValue.includes('.')) {
         displayValue += '.';
-        output.textContent = displayValue;
-    }
-    decCount++
+        ouput.textContent = displayValue;
+    };
 });
 
 equals.addEventListener('click', () => {
@@ -98,7 +96,7 @@ function operate(a, b, c) {
     }
 
 
-}
+};
 
 function opButton() {
     if (counter == 0) {
@@ -111,4 +109,13 @@ function opButton() {
     decCount = 0;
     displayValue = "";
 
-}
+};
+
+// function updateDisplay(displayNumber) {
+//     if (displayNumber.toString().length > 14) {
+//         output.textContent = displayNumber.toFixed(10);
+//     } else {
+//         output.textContent = displayNumber;
+//     };
+
+// };
