@@ -4,7 +4,6 @@ let displayValue = '';
 let aValue = 0;
 let bValue = 0;
 let operator = '';
-let counter = 0;
 
 
 // query selectors
@@ -18,26 +17,27 @@ const equals = document.getElementById('equals');
 // event listeners
 numButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        displayValue += button.innerText;
-        output.textContent = displayValue;
+        if (displayValue.toString().length < 15) {
+            displayValue += button.innerText;
+        };
+        console.log({displayValue});
+        updateDisplay(displayValue);
     });
 ;
 });
 
 opButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        operator = button.innerText;
         opButton();
+        operator = button.innerText;
     })
 })
 
 clear.addEventListener('click', () => {
     displayValue = '';
     operator = '';
-    counter = 0;
     aValue = 0;
     bValue = 0;
-    decCount = 0;
     output.textContent = displayValue;
 });
 
@@ -52,11 +52,7 @@ equals.addEventListener('click', () => {
     bValue = parseFloat(displayValue);
     console.log({bValue});
     displayValue = `${operate(aValue, operator, bValue)}`;
-    counter = 0;
-    decCount = 0;
     output.textContent = displayValue;
-
-    console.log({displayValue});
 
 })
 
@@ -99,23 +95,20 @@ function operate(a, b, c) {
 };
 
 function opButton() {
-    if (counter == 0) {
+    if (operator == '') {
         aValue = parseFloat(displayValue);
     } else {
         aValue = operate(aValue, operator, parseFloat(displayValue));
     }
-    output.textContent = aValue;
-    counter++
-    decCount = 0;
+    updateDisplay(aValue);
     displayValue = "";
-
+    console.log(operator);
 };
 
-// function updateDisplay(displayNumber) {
-//     if (displayNumber.toString().length > 14) {
-//         output.textContent = displayNumber.toFixed(10);
-//     } else {
-//         output.textContent = displayNumber;
-//     };
+function updateDisplay(displayNumber) {
 
-// };
+    if (displayNumber.toString().length < 15) {
+        output.textContent = displayNumber;
+    };
+
+};
