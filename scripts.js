@@ -38,13 +38,13 @@ clear.addEventListener('click', () => {
     operator = '';
     firstOperand = 0;
     secondOperand = 0;
-    output.textContent = displayValue;
+    updateDisplay(displayValue);
 });
 
 decimal.addEventListener('click', () => {
     if (!displayValue.includes('.')) {
         displayValue += '.';
-        ouput.textContent = displayValue;
+        updateDisplay(displayValue);
     };
 });
 
