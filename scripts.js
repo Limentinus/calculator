@@ -52,7 +52,7 @@ equals.addEventListener('click', () => {
     secondOperand = parseFloat(displayValue);
     console.log({secondOperand});
     displayValue = `${operate(firstOperand, operator, secondOperand)}`;
-    output.textContent = displayValue;
+    updateDisplay(displayValue);
 
 })
 
