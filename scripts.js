@@ -1,8 +1,8 @@
 
 // variables
 let displayValue = '';
-let aValue = 0;
-let bValue = 0;
+let firstOperand = 0;
+let secondOperand = 0;
 let operator = '';
 
 
@@ -36,8 +36,8 @@ opButtons.forEach((button) => {
 clear.addEventListener('click', () => {
     displayValue = '';
     operator = '';
-    aValue = 0;
-    bValue = 0;
+    firstOperand = 0;
+    secondOperand = 0;
     output.textContent = displayValue;
 });
 
@@ -49,9 +49,9 @@ decimal.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
-    bValue = parseFloat(displayValue);
-    console.log({bValue});
-    displayValue = `${operate(aValue, operator, bValue)}`;
+    secondOperand = parseFloat(displayValue);
+    console.log({secondOperand});
+    displayValue = `${operate(firstOperand, operator, secondOperand)}`;
     output.textContent = displayValue;
 
 })
@@ -96,11 +96,11 @@ function operate(a, b, c) {
 
 function opButton() {
     if (operator == '') {
-        aValue = parseFloat(displayValue);
+        firstOperand = parseFloat(displayValue);
     } else {
-        aValue = operate(aValue, operator, parseFloat(displayValue));
+        firstOperand = operate(firstOperand, operator, parseFloat(displayValue));
     }
-    updateDisplay(aValue);
+    updateDisplay(firstOperand);
     displayValue = "";
     console.log(operator);
 };
