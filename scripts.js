@@ -34,11 +34,7 @@ opButtons.forEach((button) => {
 })
 
 clear.addEventListener('click', () => {
-    displayValue = '';
-    operator = '';
-    firstOperand = 0;
-    secondOperand = 0;
-    updateDisplay(displayValue);
+    allClear();
 });
 
 decimal.addEventListener('click', () => {
@@ -111,4 +107,12 @@ function updateDisplay(displayNumber) {
         output.textContent = displayNumber;
     };
 
+};
+
+function allClear() {
+    displayValue = '';
+    operator = '';
+    firstOperand = 0;
+    secondOperand = 0;
+    updateDisplay(displayValue);
 };
