@@ -45,10 +45,7 @@ decimal.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
-    secondOperand = parseFloat(displayValue);
-    console.log({secondOperand});
-    displayValue = `${operate(firstOperand, operator, secondOperand)}`;
-    updateDisplay(displayValue);
+    equal();
 
 })
 
@@ -105,6 +102,8 @@ function updateDisplay(displayNumber) {
 
     if (displayNumber.toString().length < 15) {
         output.textContent = displayNumber;
+    } else {
+        output.textContent = displayNumber.toString().substring(0, 14);
     };
 
 };
@@ -115,4 +114,15 @@ function allClear() {
     firstOperand = 0;
     secondOperand = 0;
     updateDisplay(displayValue);
+};
+
+function equal() {
+    if (operator == '') {
+        return;
+    } else {
+        secondOperand = parseFloat(displayValue);
+        console.log({secondOperand});
+        displayValue = `${operate(firstOperand, operator, secondOperand)}`;
+        updateDisplay(displayValue);
+    };
 };
