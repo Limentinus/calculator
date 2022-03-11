@@ -20,7 +20,6 @@ numButtons.forEach((button) => {
         if (displayValue.toString().length < 15) {
             displayValue += button.innerText;
         };
-        console.log({displayValue});
         updateDisplay(displayValue);
     });
 ;
@@ -95,7 +94,6 @@ function opButton() {
     }
     updateDisplay(firstOperand);
     displayValue = "";
-    console.log(operator);
 };
 
 function updateDisplay(displayNumber) {
